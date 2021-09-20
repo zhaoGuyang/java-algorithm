@@ -21,14 +21,14 @@ public class Test {
 
     /*SingleNode node = null;
     SingleNode nextNode = null;
-    for (int i = a.length-1; i >= 0; i--) {
+    for (int i = a.length - 1; i >= 0; i--) {
       node = new SingleNode(a[i], nextNode);
       nextNode = node;
     }
 
-    System.out.println("删除前："+node);
-    SingleNode node1 = removeVal(node, 4);
-    System.out.println("删除后："+node1);*/
+    System.out.println("删除前：" + node);
+    SingleNode node1 = removeVal(node, 2);
+    System.out.println("删除后：" + node1);*/
 
     /*DoubleNode node = null;
     DoubleNode lastNode = null;
@@ -43,6 +43,7 @@ public class Test {
     System.out.println("反转前：" + node);
     DoubleNode reverse = reverse(node);
     System.out.println("反转后：" + reverse);*/
+
     DoubleNode node = null;
     DoubleNode lastNode = null;
     DoubleNode nextNode = null;
@@ -54,7 +55,7 @@ public class Test {
       nextNode = node;
     }
     System.out.println("删除前：" + node);
-    DoubleNode node1 = removeVal(node, 9);
+    DoubleNode node1 = removeVal(node, 3);
     System.out.println("删除后：" + node1);
   }
 
@@ -98,7 +99,7 @@ public class Test {
       nextNode = curNode.nextNode;
       curNode.nextNode = curNode.lastNode;
       curNode.lastNode = nextNode;
-      if(nextNode==null){
+      if (nextNode == null) {
         break;
       }
       curNode = nextNode;
@@ -113,15 +114,21 @@ public class Test {
    * @param node
    * @return
    */
-  public static SingleNode removeVal(SingleNode node,int value) {
+  public static SingleNode removeVal(SingleNode node, int value) {
     if (node == null) {
       return node;
     }
-    SingleNode lastNode = node;
+    SingleNode lastNode = null;
     SingleNode nextNode = node;
-    while (node!=null){
-      if(nextNode.value==value){
-        lastNode.nextNode=nextNode.nextNode;
+    while (node != null) {
+      if (nextNode.value == value) {
+
+        if (lastNode != null) {
+          lastNode.nextNode = nextNode.nextNode;
+        } else {
+          node = node.nextNode;
+        }
+
         break;
       }
       lastNode = nextNode;
@@ -136,16 +143,28 @@ public class Test {
    * @param node
    * @return
    */
-  public static DoubleNode removeVal(DoubleNode node,int value) {
+  public static DoubleNode removeVal(DoubleNode node, int value) {
     if (node == null) {
-      return node;
+      return null;
     }
-    DoubleNode lastNode = node;
+    DoubleNode lastNode = null;
     DoubleNode nextNode = node;
-    while (node!=null){
-      if(nextNode.value==value){
-        lastNode.nextNode=nextNode.nextNode;
-        nextNode.nextNode.lastNode=lastNode;
+    while (node != null) {
+
+      if (nextNode.value == value) {
+        if (lastNode != null) {
+          lastNode.nextNode = nextNode.nextNode;
+        } else {
+          //这个分支是链表第一个node需要被删除时，才走的。
+          // TODO 需要优化，看看能不能不搞这种特殊处理，写成通用的更优雅
+          nextNode = nextNode.nextNode;
+          lastNode = nextNode;
+          node = nextNode;
+        }
+
+        if (nextNode.nextNode != null) {
+          nextNode.nextNode.lastNode = lastNode;
+        }
         break;
       }
       lastNode = nextNode;

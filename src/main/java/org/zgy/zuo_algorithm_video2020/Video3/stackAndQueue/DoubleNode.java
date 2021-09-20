@@ -1,26 +1,28 @@
-package org.zgy.zuo_algorithm_video2020.Video3.linked;
+package org.zgy.zuo_algorithm_video2020.Video3.stackAndQueue;
 
 /**
  * @Author z
  * @create 2021/9/15 8:10
  */
-public class DoubleNode {
+public class DoubleNode<T> {
 
-  int value;
+  T value;
   DoubleNode lastNode;
   DoubleNode nextNode;
+  int minVal;
 
-  public DoubleNode(int value, DoubleNode lastNode, DoubleNode nextNode) {
+  public DoubleNode(T value, DoubleNode lastNode, DoubleNode nextNode,int minVal) {
     this.value = value;
     this.lastNode = lastNode;
     this.nextNode = nextNode;
+    this.minVal = minVal;
   }
 
-  public int getValue() {
+  public T getValue() {
     return value;
   }
 
-  public void setValue(int value) {
+  public void setValue(T value) {
     this.value = value;
   }
 
@@ -38,6 +40,14 @@ public class DoubleNode {
 
   public void setNextNode(DoubleNode nextNode) {
     this.nextNode = nextNode;
+  }
+
+  public int getMinVal() {
+    return minVal;
+  }
+
+  public void setMinVal(int minVal) {
+    this.minVal = minVal;
   }
 
   @Override
