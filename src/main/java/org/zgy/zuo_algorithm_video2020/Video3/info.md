@@ -19,3 +19,16 @@
 2、Master公式，求递归的时间复杂度
 
 四、哈希表和有序表
+哈希表的增删改查操作，时间复杂度都是O(1)
+哈希表存基础数据类型是值传递，引用数据类型是引用传递
+HashSet、HashMap、HashTable都是哈希表
+
+有序表：
+默认将key排序，如果是自定义类型的key，必须自定义比较器，否则有序表不支持会报运行时错误
+功能比哈希表强大，时间复杂度不如哈希表，比哈希表多的功能：
+1、获取最小key：firstKey()
+2、获取最大key：lastKey()
+3、获取<=4并离4最近的key：floorKey(4)
+4、获取>=4并离4最近的key：ceilingKey(4)
+TreeMap接口：实现：红黑树、avl树、sb树(SizeBalanceTree)、跳表
+增删改查时间复杂度都是O(logN)
