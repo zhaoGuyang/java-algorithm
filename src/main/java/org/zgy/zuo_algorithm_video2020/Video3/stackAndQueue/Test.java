@@ -28,13 +28,35 @@ public class Test {
     System.out.println(tailQueue);*/
 
     //双链表栈
-    DoubleEndsStack integerDoubleEndsStack = new DoubleEndsStack();
+    /*DoubleEndsStack integerDoubleEndsStack = new DoubleEndsStack();
     for (int i = 10; i > 0; i--) {
       integerDoubleEndsStack.push(i);
     }
     System.out.println(integerDoubleEndsStack.headNode);
     for (int i = 0; i < 10; i++) {
       System.out.println(integerDoubleEndsStack.pop()+",min:"+integerDoubleEndsStack.getMin());
+    }*/
+
+    //数组队列
+    /*ArrayQueue<Integer> integerArrayQueue = new ArrayQueue<>(10);
+    for (int i = 0; i < 10; i++) {
+      integerArrayQueue.push(i);
     }
+    System.out.println(integerArrayQueue);
+    for (int i = 0; i < 10; i++) {
+      System.out.println(integerArrayQueue.pop());
+    }
+    integerArrayQueue.pop();*/
+
+    //数组栈
+    ArrayStack<Integer> integerArrayStack = new ArrayStack<>(10);
+    for (int i = 0; i < 10; i++) {
+      integerArrayStack.push(i);
+    }
+    System.out.println(integerArrayStack);
+    for (int i = 0; i < 10; i++) {
+      System.out.println(integerArrayStack.pop());
+    }
+//    integerArrayStack.pop();
   }
 }
