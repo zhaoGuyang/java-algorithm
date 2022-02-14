@@ -1,4 +1,4 @@
-package org.zgy;
+package org.zgy.xiaohui.sort;
 
 import java.util.Random;
 
